@@ -17,15 +17,19 @@ if (is_file($hinhpart)) {
         <form action="index.php?act=updatesp" method="POST" enctype="multipart/form-data">
             <div class="row2 mb10 form_content_container">
                 <select name="iddm">
-                    <option value="0">tất cả</option>
+                    <option value="0" selected>tất cả</option>
                     <?php
                     foreach ($listdanhmuc as $danhmuc) {
-                        extract($danhmuc);
-                        if($iddm==$id)
-                        echo ' <option value="' . $id . '">' . $name . '</option>';
+                        if ($iddm == $danhmuc['id']) {
+                            $s = "selected";
+                        } else {
+                            $s = "";
+                        }
+                        echo '<option value="' . $danhmuc['id'] . '"' . $s . '>' . $danhmuc['name'] . '</option>';
                     }
                     ?>
                 </select>
+
             </div>
             <div class="row2 mb10">
                 <label>Tên sản phẩm </label> <br>

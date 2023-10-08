@@ -158,7 +158,6 @@ height:300px;
   top:50%;
   width:auto;
   padding:16px;
-  color:white;
   font-weight:bold;
   font-size:18px;
   transition:0.6s ease-in-out;
@@ -167,7 +166,8 @@ height:300px;
   
 }
 .pre:hover, .next:hover{
-  background-color:rgba(0,0,0,0.8);
+  background-color: rgb(241 163 41 / 80%);
+  opacity: 2.7;
 }
 .next{
   right:0;
@@ -176,6 +176,7 @@ height:300px;
 .pre{
   left:0;
   border-radius:0 3px 3px 0;
+  opacity: 0.7;
 }
 .items{
   width:95%;

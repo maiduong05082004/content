@@ -6,12 +6,15 @@
 //     $listdanhmuc=pdo_query($sql);
 //     return $listdanhmuc;
 // }
-// function load_ten_dm($iddm){
-//     $sql="select*from danhmuc where id=".$iddm;
-//     $dm=pdo_query_one($sql);
-//     extract($dm);
-//     return $name;
-// }
+//home_danhmuc
+function load_ten_dm($iddm){
+    $sql="select*from danhmuc where id=".$iddm;
+    $dm=pdo_query_one($sql);
+    extract($dm);
+    return $name;
+}
+
+//admin_danhmuc
 function insert_danhmuc($tenloai){
     $sql="insert into danhmuc(name) values('$tenloai')";
     pdo_execute($sql);
@@ -25,6 +28,7 @@ function loadall_danhmuc(){
     $listdanhmuc=pdo_query($sql);
     return $listdanhmuc;
 }
+
 function loadone_danhmuc($id){
     $sql="select *from danhmuc where id=".$_GET['id'];
     $dm=pdo_query_one($sql);

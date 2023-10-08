@@ -1,4 +1,26 @@
 <?php
+//home_sanpham
+function loadall_sanpham_home(){
+
+    $sql = 'SELECT * FROM sanpham where 1 order by id desc limit 0,9';
+    
+    $listsanpham = pdo_query($sql);
+    return $listsanpham;
+    
+    
+    }
+    
+    //hiển thị top 10 sản phẩm có lượt xem cao nhất
+    function loadall_sanpham_top10(){
+    
+    $sql = "SELECT * FROM sanpham where 1 order by luotxem desc limit 0,10";
+    
+    $listsanpham = pdo_query($sql);
+    return $listsanpham;
+    
+    
+    }
+//admin_sanpham
 function insert_sanpham($tensp,$giasp,$hinh,$mota,$iddm){
     $sql = "INSERT INTO sanpham (name,price,img,mota,iddm) VALUES ('$tensp', '$giasp', '$hinh', '$mota', '$iddm')";
 
@@ -9,8 +31,7 @@ function delete_sanpham($id){
     pdo_execute($sql);
 }
 function loadall_sanpham($kyw,$iddm){
-
-    $sql = "SELECT * FROM sanpham where 1";
+    $sql = "SELECT * FROM sanpham";
     if($kyw!=""){
         $sql.=" and name like '%".$kyw."%'";
     }
@@ -28,8 +49,11 @@ function loadone_sanpham($id){
     $dm=pdo_query_one($sql);
     return $dm;
 }
-function update_sanpham($id,$tenloai){
-    $sql="update sanpham set name ='".$tenloai."' where id=".$id;
+function update_sanpham($id,$iddm,$tensp,$giasp,$mota,$hinh){
+    if($hinh!="")
+        $sql="update sanpham set iddm='".$iddm."',name ='".$tensp."',price='".$giasp."',mota='".$mota."',img='".$hinh."' where id=".$id;
+    else
+        $sql="update sanpham set iddm='".$iddm."',name ='".$tensp."',price='".$giasp."',mota ='".$mota."' where id=".$id;
     pdo_execute($sql);
 }
 ?>
