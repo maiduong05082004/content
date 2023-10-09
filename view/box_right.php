@@ -27,12 +27,6 @@
                     
                     }
                   ?>
-                <!--                   
-                   <li><a href="">Đồng hồ </a></li>
-                   <li><a href="">Laptop</a></li>
-                   <li><a href="">Điện thoại</a></li>
-                   <li><a href="">Ipad</a></li>
-                   <li><a href="">Tivi</a></li> -->
             </ul>
         </div>
         <div class="box_search">
@@ -59,18 +53,5 @@
           
           ?>
 
-            <!-- <div class="selling_products" style="width:100%;">
-                <img src="./img/clockforgirl.jpg" alt="anh">
-                <a href="">Đồng hồ đeo tay nữ</a>
-            </div>
-            <div class="selling_products" style="width:100%;">
-                <img src="./img/clockforgirl.jpg" alt="anh">
-                <a href="">Đồng hồ đeo tay nữ</a>
-            </div>
-            <div class="selling_products" style="width:100%;">
-                <img src="./img/clockforgirl.jpg" alt="anh">
-                <a href="">Đồng hồ đeo tay nữ</a>
-            </div>
-        </div> -->
     </div>
 </div>

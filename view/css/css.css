@@ -235,7 +235,7 @@ form{
 }
 .form_li a{
   text-decoration: none;
-  color:aqua;
+  color: #0011ff;
 }
 .form_li a:hover{
   text-decoration: underline;
@@ -359,6 +359,10 @@ label{
   padding:10px 20px;
   border:1px #ccc solid;
   padding:30px;
+}
+.box_content2.product_portfolio.binhluan td {
+  padding: 10px;
+  padding-right: 50px;
 }
 .box_footer{
   margin-top:50px;

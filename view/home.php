@@ -11,7 +11,7 @@
         foreach($spnew as $sp){
             extract($sp);
             $hinh=$img_path.$img;
-            $link="index.php?act=";
+            $link="index.php?act=sanphamct&idsp=$id";
             if(($i==2)||($i==5)||($i==8)){
                 $mr="";
             }else{
@@ -22,7 +22,7 @@
                     <img src="'.$hinh.'" alt="">
                     <div class="add" href="">ADD TO CART</div>
                 </div>
-                <a class="item_name" href="">'.$name.'</a>
+                <a class="item_name" href="'.$link.'">'.$name.'</a>
                 <p class="price">'.$price.'</p>
 
             </div>';

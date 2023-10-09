@@ -1,5 +1,8 @@
 <?php
 //home_sanpham
+
+use LDAP\Result;
+
 function loadall_sanpham_home(){
 
     $sql = 'SELECT * FROM sanpham where 1 order by id desc limit 0,9';
@@ -56,4 +59,11 @@ function update_sanpham($id,$iddm,$tensp,$giasp,$mota,$hinh){
         $sql="update sanpham set iddm='".$iddm."',name ='".$tensp."',price='".$giasp."',mota ='".$mota."' where id=".$id;
     pdo_execute($sql);
 }
+function loadsp_cungLoai($id,$iddm){
+    $sql="select*from sanpham where iddm =$iddm and id <> $id";
+    $result=pdo_query($sql);
+    return $result;
+}
+
+
 ?>
