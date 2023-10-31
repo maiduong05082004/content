@@ -5,11 +5,11 @@
             <button class="pre" onclick="pre()">&#10094;</button>
             <button class="next" onclick="next()">&#10095;</button>
         </div>
+        <div class="box_title">SẢN PHẨM&nbsp;<strong><span style="text-transform: uppercase;"><?= $tendm ?></span></strong></div>
         <div class="items">
-
         <?php 
         $i=0;
-        foreach($spnew as $sp){
+        foreach($dssp as $sp){
             extract($sp);
             $hinh=$img_path.$img;
             $link="index.php?act=sanphamct&idsp=$id";
@@ -34,4 +34,3 @@
     <?php include "box_right.php"?>
 
 </main>
-<!-- BANNER 2 -->

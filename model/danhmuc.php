@@ -1,19 +1,16 @@
 
 <?php
 
-// function loadall_danhmuc(){
-//     $sql="select*from danhmuc order by id desc limit 0,9";
-//     $listdanhmuc=pdo_query($sql);
-//     return $listdanhmuc;
-// }
-//home_danhmuc
 function load_ten_dm($iddm){
+    if($iddm>0){
     $sql="select*from danhmuc where id=".$iddm;
     $dm=pdo_query_one($sql);
     extract($dm);
     return $name;
+    }else{
+        return "";
+    }
 }
-
 //admin_danhmuc
 function insert_danhmuc($tenloai){
     $sql="insert into danhmuc(name) values('$tenloai')";

@@ -1,8 +1,5 @@
 <?php
 //home_sanpham
-
-use LDAP\Result;
-
 function loadall_sanpham_home(){
 
     $sql = 'SELECT * FROM sanpham where 1 order by id desc limit 0,9';
@@ -15,7 +12,7 @@ function loadall_sanpham_home(){
     
     //hiển thị top 10 sản phẩm có lượt xem cao nhất
     function loadall_sanpham_top10(){
-    
+    //thừa
     $sql = "SELECT * FROM sanpham where 1 order by luotxem desc limit 0,10";
     
     $listsanpham = pdo_query($sql);
@@ -33,20 +30,25 @@ function delete_sanpham($id){
     $sql="delete from sanpham where id=".$id;
     pdo_execute($sql);
 }
-function loadall_sanpham($kyw,$iddm){
-    $sql = "SELECT * FROM sanpham";
-    if($kyw!=""){
-        $sql.=" and name like '%".$kyw."%'";
+function loadall_sanpham($kyw = "", $iddm = 0)
+{
+    $sql = "SELECT sanpham.*, COUNT(binhluan.id) as soBinhLuan 
+            FROM sanpham
+            LEFT JOIN binhluan ON binhluan.idpro = sanpham.id
+            WHERE 1";
+
+    if ($kyw != "") {
+        $sql .= " AND sanpham.name LIKE '%" . $kyw . "%'";
     }
-    if($iddm>0){
-        $sql.=" and iddm ='".$iddm."'";
+    if ($iddm > 0) {
+        $sql .= " AND sanpham.iddm = '" . $iddm . "'";
     }
-    $sql.= " order by id desc";
-    
+
+    $sql .= " GROUP BY sanpham.id ORDER BY sanpham.id DESC";
     $listsanpham = pdo_query($sql);
+
     return $listsanpham;
-    
-    }
+}
 function loadone_sanpham($id){
     $sql="select *from sanpham where id=".$id;
     $dm=pdo_query_one($sql);

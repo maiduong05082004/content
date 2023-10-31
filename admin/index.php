@@ -3,6 +3,9 @@ include "header.php";
 include "../model/pdo.php";
 include "../model/danhmuc.php";
 include "../model/sanpham.php";
+include "../model/taikhoan.php";
+include "../model/binhluan.php";
+include "../model/thongke.php";
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
@@ -129,8 +132,91 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "sanpham/list.php";
 
             break;
-        case "thongke":
-            include "thongke.php";
+            //tai khoan start
+        case "dskh":
+            $listtaikhoan = loadall_taikhoan();
+            include "taikhoan/list.php";
+            break;
+        case 'addkh':
+            if (isset($_POST['btn_addkh'])) {
+                $user = $_POST['username'];
+                $pass = $_POST['password'];
+                $email = $_POST['email'];
+                $address = $_POST['address'];
+                $tel = $_POST['tel'];
+                $role = $_POST['role'];
+                insert_taikhoan_kh_admin($user, $pass, $email, $address, $tel, $role);
+                $thongbao = "Thêm thành công";
+            }
+            include "taikhoan/add.php";
+            break;
+        case 'xoatk':
+            $id = $_GET['id'];
+            delete_taikhoan_admin($id);
+            $listtaikhoan = loadall_taikhoan();
+            $thongbao = "Xóa thành công";
+            include "taikhoan/list.php";
+            break;
+        case 'suatk':
+            if (isset($_POST['id'])) {
+                $id = $_GET['id'];
+                $tk = check_tk_admin($id);
+            }
+            include "taikhoan/update.php";
+            break;
+        case 'editkh':
+            if (isset($_POST['btn_updatekh'])) {
+                $id = $_POST['id'];
+                $user = $_POST['username'];
+                $pass = $_POST['password'];
+                $email = $_POST['email'];
+                $address = $_POST['address'];
+                $tel = $_POST['tel'];
+                $role = $_POST['role'];
+                update_taikhoan_admin($id, $user, $pass, $email, $address, $tel, $role);
+                $thongbao = "Sửa thành công";
+            }
+            $listtaikhoan = loadall_taikhoan();
+            require 'taikhoan/list.php';
+            break;
+            //end tài khoản
+            //star bình luậnu
+        case "dsbl":
+            $listbinhluan = loadall_binhluan(0);
+            include "binhluan/list.php";
+            break;
+        case 'xoabl':
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                delete_binhluan($_GET['id']);
+            }
+
+            $idpro = '';
+
+            $listbinhluan = loadall_binhluan($idpro);
+            include "binhluan/list.php";
+            break;
+
+        case 'thongke':
+
+            $dsthongke = load_thongke();
+            include "thongke/list.php";
+
+            break;
+
+
+
+        case 'bieudo':
+            $dsthongke = load_thongke();
+            include "thongke/bieudo.php";
+
+            break;
+
+        case 'bieudosp':
+            $kyw = ''; // Truyền giá trị mặc định cho $kyw
+            $iddm = 0; // Truyền giá trị mặc định cho $iddm
+            $listsanpham = loadall_sanpham($kyw, $iddm);
+            include "sanpham/bieudo.php";
+
             break;
     }
 } else {

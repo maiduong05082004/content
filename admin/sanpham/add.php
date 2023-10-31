@@ -43,7 +43,6 @@
 
                 <a href="index.php?act=listsp"><input class="mr20" type="button" value="DANH SÁCH"></a>
             </div>
-
             <?php
 if(isset($thongbao)&&($thongbao!=""))echo $thongbao;
 

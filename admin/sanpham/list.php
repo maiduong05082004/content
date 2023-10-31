@@ -4,7 +4,7 @@
     </div>
 
     <div class="row2 form_content ">
-        <form action="index.php?act=listsp" method="POST">
+        <form action="index.php?act=listsp" method="POST" enctype="multipart/form-data">
             <div class="row2 mb10 formds_loai">
 
                 <input type="text" name="kyw">
@@ -29,7 +29,7 @@
                 <th>Hình</th>
                 <th>Gía</th>
                 <th>Lượt Xem</th>
-
+                <th>Số Bình Luận</th>
                 <th></th>
             </tr>
 
@@ -37,11 +37,11 @@
 
             foreach ($listsanpham as $sanpham) {
                 extract($sanpham);
-                $suasp = "index.php?act=suasp&id=" . $id;
-                $xoasp = "index.php?act=xoasp&id=" . $id;
-                $hinhpart = "../upload/" . $img;
+                $suasp = "index.php?act=suasp&id=".$id;
+                $xoasp = "index.php?act=xoasp&id=".$id;
+                $hinhpart = "../upload/".$img;
                 if (is_file($hinhpart)) {
-                    $hinh = "<img src='" . $hinhpart . "' height='80'>";
+                    $hinh = "<img src='".$hinhpart."' height='80'>";
                 } else {
                     $hinh = "no poto";
                 }
@@ -53,16 +53,28 @@
        <td>' . $hinh . '</td>
        <td>' . $price . '</td>
        <td>' . $luotxem . '</td>
+       <td>' . $soBinhLuan . '</td>
        <td><a href="' . $suasp . '"><input type="button" value="Sửa"></a>   <a href="' . $xoasp . '"><input type="button" value="Xóa"></a></td>
       </tr>';
             }
+
+
+
+
+
+
+
+
             ?>
+
+
         </table>
     </div>
     <div class="row mb10 ">
         <input class="mr20" type="button" value="CHỌN TẤT CẢ">
         <input class="mr20" type="button" value="BỎ CHỌN TẤT CẢ">
         <a href="index.php?act=addsp"> <input class="mr20" type="button" value="NHẬP THÊM"></a>
+        <a href="index.php?act=bieudosp"> <input class="mr20" type="button" value="Biểu đồ bình luận sản phẩm"></a>
     </div>
 
 </div>

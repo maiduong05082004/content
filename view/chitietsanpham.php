@@ -15,29 +15,7 @@
     </div>
 
     <div class="mb">
-      <div class="box_title">BÌNH LUẬN</div>
-      <div class="box_content2  product_portfolio binhluan ">
-        <table>
-          <?php
-          foreach ($binhluan as $value) {
-            extract($value);
-            echo '<tr>';
-            echo '<td>' . $noidung . '</td>';
-            echo '<td>' . $user . '</td>';
-            echo '<td>' . date('d/m/Y', strtotime($ngaybinhluan))  . '</td>';
-            echo '</tr>';
-          }
-          ?>
-
-        </table>
-      </div>
-      <div class="box_search">
-        <form action="index.php?act=sanphamct" method="POST">
-          <input type="hidden" name="idpro" value="<?php echo $id;?>">
-          <input type="text" name="noidung">
-          <input type="submit" name="guibinhluan" value="Gửi bình luận">
-        </form>
-      </div>
+  <iframe src="view\binhluan\binhluanform.php?idpro=<?=$id?>" frameborder="0" width="100%" height="300px"></iframe>
 
     </div>
 

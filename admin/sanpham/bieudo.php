@@ -10,22 +10,23 @@
       <script>
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
-
         function drawChart() {
-
-// Set Data
           const data = google.visualization.arrayToDataTable([
-            ['Contry', 'Mhl'],
-            ['Italy',54.8],
-            ['France',48.6],
-            ['Spain',44.4],
-            ['USA',23.9],
-            ['Argentina',14.5]
+            ['Danh Mục', 'Số Lượng'],
+        <?php   
+        
+        foreach($listsanpham as $sanpham){
+          extract($sanpham);
+          echo "['$name',$soBinhLuan],";
+
+        }
+        
+        ?>  
           ]);
 
 // Set Options
           const options = {
-            title:'World Wide Wine Production',
+            title:'Biểu đồ bình luận sản phẩm',
             is3D:true
           };
 
@@ -38,8 +39,3 @@
 
     </div>
   </div>
-
-  <!-- END HEADER -->
-
-
-</div>

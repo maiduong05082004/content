@@ -2,6 +2,7 @@
 if (is_array($dm)){
     extract($dm);
 }
+
 ?>
 <div class="row2">
     <div class="row2 font_title">
